@@ -1,0 +1,28 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.sdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.sdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    // Dagger Hilt
+    implementation libs.hilt.android
+    annotationProcessor libs.hilt.compiler
+
+    // Timber
+    implementation libs.timber
+
+    // Joda
+    implementation libs.joda.time
+
+    testImplementation libs.junit
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation libs.androidx.test.expresso.core
+}

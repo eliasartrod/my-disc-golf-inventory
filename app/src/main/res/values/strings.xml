@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">my-disc-golf-inventory</string>
+
+    <string name="app_home_title">My Disc Golf Inventory</string>
+
+    <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
+    <string name="register">Register</string>
+    <string name="login_instructions">Please Select an Option to Continue</string>
+
+    <string name="error">Error, Reason: %s</string>
+</resources>
