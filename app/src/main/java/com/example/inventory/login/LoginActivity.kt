@@ -1,4 +1,4 @@
-package com.example.inventory.main
+package com.example.inventory.login
 
 import android.os.Bundle
 import com.example.inventory.R

@@ -7,7 +7,7 @@ data class Authentication(
     val sessionId: String,
     val sessionName: String,
     val token: String,
-    val user: User
+    val user: User?
 ) {
     companion object {
         fun fromNetwork(networkAuthentication: NetworkAuthentication): Authentication {
@@ -15,7 +15,7 @@ data class Authentication(
                 networkAuthentication.sessid,
                 networkAuthentication.session_name,
                 networkAuthentication.token,
-                User.fromNetwork(networkAuthentication.user)
+                networkAuthentication.user.let { User.fromNetwork(it) }
             )
         }
     }
@@ -23,17 +23,13 @@ data class Authentication(
 
 data class User(
     val name: String,
-    val mail: String,
-    val login: String,
-    val status: String
+    val mail: String
 ) {
     companion object {
         fun fromNetwork(networkUser: NetworkUser): User {
             return User(
                 networkUser.name,
-                networkUser.mail,
-                networkUser.login,
-                networkUser.status
+                networkUser.mail
             )
         }
     }

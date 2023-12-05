@@ -57,15 +57,15 @@
         <item name="android:fontFamily">@font/arialmt_bold</item>
     </style>
 
-    <style name="MainAppTheme.Button.Blue">
+    <style name="MainAppTheme.Button.Regular">
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/arialmt_bold</item>
     </style>
 
-    <style name="MainAppTheme.Button.Yellow" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:backgroundTint">@color/bg_button_yellow</item>
+    <style name="MainAppTheme.Button.Blue" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:backgroundTint">@color/bg_button</item>
         <item name="android:textColor">@color/black</item>
-    </style>`
+    </style>
 
     <style name="MainAppTheme.Button.White" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textAllCaps">true</item>

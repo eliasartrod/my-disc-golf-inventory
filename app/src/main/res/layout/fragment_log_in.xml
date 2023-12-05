@@ -15,27 +15,59 @@
         android:padding="20dp"
         android:text="@string/login_instructions"
         android:textAlignment="center"
-        android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        style="@style/MainAppTheme.Button.Yellow"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/user_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/doubleSpacing"
+        android:layout_marginEnd="@dimen/doubleSpacing"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="@string/user_name_hint"
+        android:inputType="text"
+        android:background="@drawable/rectangle_stroke"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_title_description"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/user_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/doubleSpacing"
+        android:layout_marginEnd="@dimen/doubleSpacing"
+        android:ems="10"
+        android:hint="@string/user_password_hint"
+        android:inputType="text"
+        android:background="@drawable/rectangle_stroke"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_name" />
+
+    <Button
+        style="@style/MainAppTheme.Button.Blue"
         android:id="@+id/action_log_in"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/log_in"
+        android:enabled="false"
+        android:layout_marginTop="@dimen/tripleSpacing"
         android:layout_marginStart="@dimen/doubleSpacing"
         android:layout_marginEnd="@dimen/doubleSpacing"
-        app:layout_constraintTop_toBottomOf="@id/main_title_description"
+        app:layout_constraintTop_toBottomOf="@id/user_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        style="@style/MainAppTheme.Button.Yellow"
+    <Button
+        style="@style/MainAppTheme.Button.WhiteAndBlack"
         android:id="@+id/action_log_out"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,6 +76,43 @@
         android:layout_marginEnd="@dimen/doubleSpacing"
         app:layout_constraintTop_toBottomOf="@id/action_log_in"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        style="@style/MainAppTheme.Button.Blue"
+        android:id="@+id/action_continue_as_guest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/continue_as_guest"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="@dimen/doubleSpacing"
+        android:layout_marginEnd="@dimen/doubleSpacing"
+        app:layout_constraintTop_toBottomOf="@id/action_log_out"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        style="@style/MainAppTheme.Button.Blue"
+        android:id="@+id/action_clear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/doubleSpacing"
+        android:layout_marginEnd="@dimen/doubleSpacing"
+        android:text="@string/clear_fields"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_continue_as_guest" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+        android:id="@+id/progressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
