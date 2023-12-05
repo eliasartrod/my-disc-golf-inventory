@@ -4,8 +4,10 @@ import android.content.Context
 import com.example.inventory.common.AppPreferences
 import com.example.inventory.network.MyDiscGolfInventoryDataSource
 import com.example.inventory.network.NetworkDataSource
+import com.example.inventory.network.resultcall.ResultCallAdapterFactory
 import com.example.inventory.network.retrofit.AuthenticationService
 import com.example.inventory.network.retrofit.PdgaService
+import com.example.inventory.utils.BaseSchedulerProvider
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -15,6 +17,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
@@ -25,7 +28,8 @@ object NetworkModule {
     fun provideRetrofit(
         @ApplicationContext context: Context,
         appPreferences: AppPreferences,
-        gson: Gson
+        gson: Gson,
+        schedulerProvider: BaseSchedulerProvider
     ): Retrofit {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -54,8 +58,10 @@ object NetworkModule {
 
         return Retrofit.Builder()
             .baseUrl("https://api.pdga.com")
-            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
+            .addCallAdapterFactory(ResultCallAdapterFactory())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(schedulerProvider.io()))
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
 

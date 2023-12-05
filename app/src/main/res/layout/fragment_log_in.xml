@@ -67,18 +67,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        style="@style/MainAppTheme.Button.WhiteAndBlack"
-        android:id="@+id/action_log_out"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/log_out"
-        android:layout_marginStart="@dimen/doubleSpacing"
-        android:layout_marginEnd="@dimen/doubleSpacing"
-        app:layout_constraintTop_toBottomOf="@id/action_log_in"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
         style="@style/MainAppTheme.Button.Blue"
         android:id="@+id/action_continue_as_guest"
         android:layout_width="0dp"
@@ -87,7 +75,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginStart="@dimen/doubleSpacing"
         android:layout_marginEnd="@dimen/doubleSpacing"
-        app:layout_constraintTop_toBottomOf="@id/action_log_out"
+        app:layout_constraintTop_toBottomOf="@id/action_log_in"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -49,10 +49,6 @@ class LoginFragment: BaseFragment() {
     }
 
     private fun setupListeners() {
-        binding.actionLogOut.setOnClickListener {
-            viewModel.logout()
-        }
-
         binding.actionContinueAsGuest.setOnClickListener {
             val fragment = MainFragment()
             ActivityUtils.addFragmentWithBackStack(

@@ -9,5 +9,6 @@ data class NetworkAuthentication(
 
 data class NetworkUser(
     val name: String,
-    val mail: String
+    val mail: String,
+    val roles: Map<String, String>
 )
