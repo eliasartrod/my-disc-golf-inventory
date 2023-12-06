@@ -23,6 +23,13 @@
         android:title="@string/events" />
 
     <item
+        android:id="@+id/player_lookup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ic_player_lookup"
+        android:title="@string/players" />
+
+    <item
         android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

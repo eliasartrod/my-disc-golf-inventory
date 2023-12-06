@@ -8,13 +8,13 @@ import androidx.fragment.app.viewModels
 import com.example.inventory.R
 import com.example.inventory.common.BaseActivity
 import com.example.inventory.common.BaseFragment
-import com.example.inventory.databinding.FragmentInventoryBinding
+import com.example.inventory.databinding.FragmentPlayerLookupBinding
 import com.example.inventory.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class InventoryFragment: BaseFragment() {
-    private lateinit var binding: FragmentInventoryBinding
+class PlayerLookupFragment: BaseFragment() {
+    private lateinit var binding: FragmentPlayerLookupBinding
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -27,7 +27,7 @@ class InventoryFragment: BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentInventoryBinding.inflate(inflater, container, false)
+        binding = FragmentPlayerLookupBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,7 +35,7 @@ class InventoryFragment: BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as BaseActivity?)?.showBackButton(true)
 
-        setActionBarTitle(getString(R.string.app_inventory_title))
+        setActionBarTitle(getString(R.string.app_player_lookup_title))
 
     }
 }

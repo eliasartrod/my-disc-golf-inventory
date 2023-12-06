@@ -33,6 +33,7 @@
         android:inputType="text"
         android:background="@drawable/rectangle_stroke"
         android:padding="10dp"
+        android:imeOptions="actionNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_title_description"/>
@@ -45,15 +46,16 @@
         android:layout_marginEnd="@dimen/doubleSpacing"
         android:ems="10"
         android:hint="@string/user_password_hint"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:background="@drawable/rectangle_stroke"
         android:padding="10dp"
+        android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/user_name" />
 
     <Button
-        style="@style/MainAppTheme.Button.Blue"
+        style="@style/MainAppTheme.Button.Green"
         android:id="@+id/action_log_in"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -67,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        style="@style/MainAppTheme.Button.Blue"
+        style="@style/MainAppTheme.Button.Green"
         android:id="@+id/action_continue_as_guest"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -80,7 +82,19 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        style="@style/MainAppTheme.Button.Blue"
+        style="@style/MainAppTheme.Button.Green"
+        android:id="@+id/action_clear_cache"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_preferences"
+        android:layout_marginStart="@dimen/doubleSpacing"
+        android:layout_marginEnd="@dimen/doubleSpacing"
+        app:layout_constraintTop_toBottomOf="@id/action_continue_as_guest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        style="@style/MainAppTheme.Button.Green"
         android:id="@+id/action_clear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -90,17 +104,16 @@
         android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action_continue_as_guest" />
+        app:layout_constraintTop_toBottomOf="@+id/action_clear_cache" />
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        style="@style/Widget.MaterialComponents.CircularProgressIndicator"
-        android:id="@+id/progressBar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <ProgressBar
+        android:id="@+id/progressIndicator"
+        android:layout_width="@dimen/progressIndicatorSize"
+        android:layout_height="@dimen/progressIndicatorSize"
         android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

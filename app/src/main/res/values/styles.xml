@@ -62,7 +62,7 @@
         <item name="android:fontFamily">@font/arialmt_bold</item>
     </style>
 
-    <style name="MainAppTheme.Button.Blue" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="MainAppTheme.Button.Green" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:backgroundTint">@color/bg_button</item>
         <item name="android:textColor">@color/black</item>
     </style>

@@ -45,10 +45,14 @@ class LoginFragment: BaseFragment() {
 
         viewModel.snackBar.observe(viewLifecycleOwner) { showSnackBar(it) }
         viewModel.loading.observe(viewLifecycleOwner) { showLoadingProgress(it) }
+        viewModel.isLogInSuccessful.observe(viewLifecycleOwner) { setupLogInListener(it) }
 
     }
 
     private fun setupListeners() {
+        binding.actionClearCache.setOnClickListener {
+            viewModel.invalidatePreferences()
+        }
         binding.actionContinueAsGuest.setOnClickListener {
             val fragment = MainFragment()
             ActivityUtils.addFragmentWithBackStack(
@@ -98,18 +102,42 @@ class LoginFragment: BaseFragment() {
                 val password = binding.userPassword.text.toString()
 
                 viewModel.sendAuthentication(username, password)
+                clearFields()
             }
             binding.actionClear.setOnClickListener {
-                binding.userName.text = null
-                binding.userPassword.text = null
+                clearFields()
             }
         }
 
     }
 
+    private fun clearFields() {
+        binding.userName.text = null
+        binding.userPassword.text = null
+    }
+
     private fun showLoadingProgress(event: Event<Boolean?>) {
-        event.contentIfNotHandled?.takeIf { shouldShow -> shouldShow }
-            ?.run { binding.progressBar.visibility = View.VISIBLE }
+        event.contentIfNotHandled?.let {
+            if (it) {
+                binding.progressIndicator.visibility = View.VISIBLE
+            } else {
+                binding.progressIndicator.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun setupLogInListener(event: Event<Boolean?>) {
+        event.contentIfNotHandled?.let {
+            if (it) {
+                val fragment = MainFragment()
+                ActivityUtils.addFragmentWithBackStack(
+                    parentFragmentManager,
+                    fragment,
+                    R.id.fragment_container,
+                    "main_fragment"
+                )
+            }
+        }
     }
 
 }

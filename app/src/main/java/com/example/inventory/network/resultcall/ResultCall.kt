@@ -2,6 +2,8 @@ package com.example.inventory.network.resultcall
 
 import com.example.inventory.network.model.ErrorResponse
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
+import com.google.gson.reflect.TypeToken
 import okhttp3.Request
 import okio.Timeout
 import retrofit2.Call
@@ -34,15 +36,20 @@ class ResultCall<T>(val delegate: Call<T>) : Call<Result<T>> {
                         // Handle error response
                         val errorResponse: ErrorResponse = try {
                             val errorBody = response.errorBody()?.string()
-                            Gson().fromJson(errorBody, ErrorResponse::class.java)
-                        } catch (e: Exception) {
-                            ErrorResponse("error", null, "Unknown Error", null)
+                            val messages = Gson().fromJson<List<String>>(errorBody, object : TypeToken<List<String>>() {}.type)
+                            ErrorResponse(messages)
+                        } catch (e: JsonSyntaxException) {
+                            e.printStackTrace()
+                            ErrorResponse(null)
                         }
+
+                        // Log detailed information
+                        println("Error Body: $errorResponse")
 
                         // Sending the error response to the callback
                         callback.onResponse(
                             this@ResultCall,
-                            success(Result.failure(RuntimeException(errorResponse.message)))
+                            success(Result.failure(RuntimeException(errorResponse.errorBody?.joinToString(", ") ?: "Unknown Error")))
                         )
                     }
                 }

@@ -14,4 +14,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <Button
+        style="@style/MainAppTheme.Button.Green"
+        android:id="@+id/action_log_out"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="@dimen/doubleSpacing"
+        android:layout_marginEnd="@dimen/doubleSpacing"
+        tools:text="Go Home or Log Out"
+        app:layout_constraintBottom_toTopOf="@id/toolbarDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressIndicator"
+        android:layout_width="@dimen/progressIndicatorSize"
+        android:layout_height="@dimen/progressIndicatorSize"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

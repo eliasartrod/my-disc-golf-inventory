@@ -8,10 +8,7 @@ import com.example.inventory.R
 import com.example.inventory.common.BaseActivity
 import com.example.inventory.common.BaseFragment
 import com.example.inventory.databinding.FragmentMainBinding
-import com.example.inventory.main.bottomnavpages.EventsFragment
-import com.example.inventory.main.bottomnavpages.HomeFragment
-import com.example.inventory.main.bottomnavpages.InventoryFragment
-import com.example.inventory.main.bottomnavpages.SettingsFragment
+import com.example.inventory.main.bottomnavpages.*
 import com.example.inventory.utils.ActivityUtils
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -74,6 +71,14 @@ class MainFragment : BaseFragment() {
                     ActivityUtils.replaceFragment(
                         childFragmentManager,
                         SettingsFragment(),
+                        R.id.subFragmentContainer
+                    )
+                    true
+                }
+                R.id.player_lookup -> {
+                    ActivityUtils.replaceFragment(
+                        childFragmentManager,
+                        PlayerLookupFragment(),
                         R.id.subFragmentContainer
                     )
                     true

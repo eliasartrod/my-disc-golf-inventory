@@ -1,8 +1,8 @@
 package com.example.inventory.data
 
 import com.example.inventory.model.Authentication
+import com.example.inventory.model.PlayerList
 import com.example.inventory.network.NetworkDataSource
-import retrofit2.HttpException
 import javax.inject.Inject
 
 class AuthenticationRepository @Inject constructor(
@@ -22,24 +22,15 @@ class AuthenticationRepository @Inject constructor(
         tokenId: String,
         sessionName: String
     ): Result<String> {
-        return try {
-            val result = dataSource.logout(sessionId, tokenId, sessionName)
-            if (result.isSuccess) {
-                val responseBody = result.getOrNull() ?: ""
-                Result.success(responseBody)
-            } else {
-                val errorBody = result.exceptionOrNull()?.let { exception ->
-                    if (exception is HttpException) {
-                        exception.response()?.errorBody()?.string()
-                    } else {
-                        null
-                    }
-                }
-                Result.failure(Exception("Unsuccessful response: $errorBody"))
-            }
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+        return dataSource.logout(sessionId, tokenId, sessionName)
+    }
+
+    suspend fun searchPlayers(
+        sessionId: String,
+        sessionName: String
+    ): Result<PlayerList?> {
+        return dataSource.searchPlayers(sessionId, sessionName)
+            .map { PlayerList.fromNetwork(it) }
     }
 
 }

@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.inventory.R
 import com.example.inventory.common.BaseActivity
 import com.example.inventory.common.BaseFragment
 import com.example.inventory.databinding.FragmentEventsBinding
+import com.example.inventory.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class EventsFragment: BaseFragment() {
     private lateinit var binding: FragmentEventsBinding
+
+    private val viewModel: MainViewModel by viewModels()
 
     override fun getRoot(): View? {
         return binding.root

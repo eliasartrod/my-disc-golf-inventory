@@ -15,10 +15,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -36,24 +38,8 @@ object NetworkModule {
 
         val client = OkHttpClient.Builder()
             .addInterceptor(interceptor)
-            .addInterceptor { chain ->
-                // Add X-CSRF-Token and Cookie headers only when the flag is set
-                val original = chain.request()
-                val requestBuilder = original.newBuilder()
-
-                // Conditionally add headers based on the preference
-                if (appPreferences.shouldIncludeLogoutHeader == true) {
-                    requestBuilder
-                        .header("X-CSRF-Token", "your_token")  // Replace with your actual token
-                        .header("Cookie", "session_name=your_sessid")  // Replace with your actual sessid
-                }
-
-                val request = requestBuilder
-                    .method(original.method, original.body)
-                    .build()
-
-                chain.proceed(request)
-            }
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(90, TimeUnit.SECONDS)
             .build()
 
         return Retrofit.Builder()
