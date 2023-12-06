@@ -21,8 +21,4 @@ interface AuthenticationService {
         @Header("Cookie") sessionCookie: String
     ): Result<String>
 
-    @GET(value = "/services/json/players")
-    suspend fun searchPlayers(
-        @Header("Cookie") sessionCookie: String
-    ): Result<NetworkPlayerList>
 }

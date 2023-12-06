@@ -29,6 +29,6 @@ class MyDiscGolfInventoryDataSource(
     }
 
     override suspend fun searchPlayers(sessionId: String, sessionName: String): Result<NetworkPlayerList> {
-        return authenticationService.searchPlayers("$sessionName=$sessionId")
+        return pdgaService.searchPlayers("$sessionName=$sessionId")
     }
 }
