@@ -9,6 +9,8 @@ import com.example.inventory.common.AppPreferences
 import com.example.inventory.common.Event
 import com.example.inventory.common.SnackBarMessage
 import com.example.inventory.data.AuthenticationRepository
+import com.example.inventory.model.Player
+import com.example.inventory.model.PlayerList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,11 +24,12 @@ class MainViewModel @Inject constructor(
     private val _loading = MutableLiveData<Event<Boolean?>>()
     private val _snackBar = MutableLiveData<Event<SnackBarMessage>>()
     private val _isLogOutSuccessful = MutableLiveData<Event<Boolean?>>()
+    private val _playerList = MutableLiveData<PlayerList>()
 
     val loading: LiveData<Event<Boolean?>> = _loading
     val snackBar: LiveData<Event<SnackBarMessage>> = _snackBar
     val isLogoutSuccessful: LiveData<Event<Boolean?>> = _isLogOutSuccessful
-
+    val playerList: LiveData<PlayerList> = _playerList
 
     fun logout() {
         val sessionId = _appPreferences.sessionId
@@ -42,6 +45,55 @@ class MainViewModel @Inject constructor(
                     _snackBar.value = Event(message)
                     _isLogOutSuccessful.value = Event(true)
                     invalidatePreferences()
+                } else {
+                    val errorBody = result.exceptionOrNull()?.localizedMessage
+                    val message = SnackBarMessage(R.string.message_error)
+                    if (errorBody != null) {
+                        message.addFormattedMessage(errorBody)
+                    }
+                    _snackBar.value = Event(message)
+                }
+                _loading.value = Event(false)
+            }
+        }
+    }
+
+    fun searchPlayers(
+        pdgaNumber: Int?,
+        lastName: String?,
+        firstName: String?,
+        playerClass: String?,
+        city: String?,
+        stateProv: String?,
+        country: String?,
+        lastModified: String?,
+        limit: Int?,
+        offset: Int?
+    ) {
+        val sessionId = _appPreferences.sessionId
+        val sessionName = _appPreferences.sessionName
+
+        if (sessionId != null && sessionName != null) {
+            viewModelScope.launch {
+                _loading.value = Event(true)
+                val result = _authenticationRepository.searchPlayers(
+                    sessionId,
+                    sessionName,
+                    pdgaNumber,
+                    lastName,
+                    firstName,
+                    playerClass,
+                    city,
+                    stateProv,
+                    country,
+                    lastModified,
+                    limit,
+                    offset
+                )
+                if (result.isSuccess) {
+                    result.getOrNull().let {
+                        _playerList.value = it
+                    }
                 } else {
                     val errorBody = result.exceptionOrNull()?.localizedMessage
                     val message = SnackBarMessage(R.string.message_error)

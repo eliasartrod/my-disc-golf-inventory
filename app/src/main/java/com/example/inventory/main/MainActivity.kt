@@ -14,10 +14,10 @@ class LoginActivity : BaseActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
 
         val fragment = MainFragment()
-                ActivityUtils.addFragment(
-                    supportFragmentManager,
-                    fragment,
-                    R.id.fragment_container
-                )
+        ActivityUtils.addFragment(
+            supportFragmentManager,
+            fragment,
+            R.id.fragment_container
+        )
     }
 }

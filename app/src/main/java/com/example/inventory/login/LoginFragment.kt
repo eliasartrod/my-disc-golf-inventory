@@ -54,6 +54,7 @@ class LoginFragment: BaseFragment() {
             viewModel.invalidatePreferences()
         }
         binding.actionContinueAsGuest.setOnClickListener {
+            viewModel.invalidatePreferences()
             val fragment = MainFragment()
             ActivityUtils.addFragmentWithBackStack(
                 parentFragmentManager,

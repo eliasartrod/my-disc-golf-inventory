@@ -1,17 +1,195 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/concrete"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/toolbarDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/toolbarDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/filter_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginBottom="@dimen/spacing"
+            android:background="@color/concrete"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/toolbarDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/toolbarDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/instructions"
+                style="@style/MainAppTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/spacing"
+                android:text="@string/search_instructions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbarDivider" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/player_name_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:background="@drawable/rectangle_stroke"
+                android:hint="@string/name_hint"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/instructions" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/player_last_name_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:background="@drawable/rectangle_stroke"
+                android:hint="@string/last_name_hint"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_name_input" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/player_pdga_number_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:background="@drawable/rectangle_stroke"
+                android:hint="@string/pdga_number_hint"
+                android:imeOptions="actionDone"
+                android:padding="@dimen/spacing"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_last_name_input" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/player_city_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:background="@drawable/rectangle_stroke"
+                android:hint="@string/city_hint"
+                android:imeOptions="actionDone"
+                android:padding="@dimen/spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_pdga_number_input" />
+
+            <Spinner
+                android:id="@+id/player_class_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:background="@android:drawable/btn_dropdown"
+                android:entries="@array/player_class"
+                android:padding="@dimen/tripleSpacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_city_input"
+                tools:ignore="LabelFor" />
+
+            <Spinner
+                android:id="@+id/player_state_province_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:background="@android:drawable/btn_dropdown"
+                android:entries="@array/state_province_array"
+                android:padding="@dimen/tripleSpacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_city_input"
+                tools:ignore="LabelFor" />
+
+            <Spinner
+                android:id="@+id/player_country_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:background="@android:drawable/btn_dropdown"
+                android:entries="@array/countries_array"
+                android:padding="@dimen/tripleSpacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_state_province_input"
+                tools:ignore="LabelFor" />
+
+            <Button
+                android:id="@+id/action_apply"
+                style="@style/MainAppTheme.Button.Blue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:text="@string/action_apply"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_country_input" />
+
+            <Button
+                android:id="@+id/action_cancel"
+                style="@style/MainAppTheme.Button.Blue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing"
+                android:text="@string/action_cancel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/action_apply" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/recyclerViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_container">
+
+            <ProgressBar
+                android:id="@+id/progressIndicator"
+                android:layout_width="@dimen/progressIndicatorSize"
+                android:layout_height="@dimen/progressIndicatorSize"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/playerList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="5"
+                tools:listitem="@layout/player_list_card" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

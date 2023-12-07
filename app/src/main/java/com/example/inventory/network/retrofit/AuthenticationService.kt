@@ -19,6 +19,6 @@ interface AuthenticationService {
     suspend fun logout(
         @Header("X-CSRF-Token") tokenId: String,
         @Header("Cookie") sessionCookie: String
-    ): Result<String>
+    ): Result<List<String>>
 
 }

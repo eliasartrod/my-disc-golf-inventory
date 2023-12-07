@@ -38,20 +38,20 @@ data class Player(
     companion object {
         fun fromNetwork(networkPlayer: NetworkPlayer): Player {
             return Player(
-                networkPlayer.firstName,
-                networkPlayer.lastName,
-                networkPlayer.pdgaNumber,
-                networkPlayer.membershipStatus,
-                networkPlayer.membershipExpirationDate,
+                networkPlayer.first_name,
+                networkPlayer.last_name,
+                networkPlayer.pdga_number,
+                networkPlayer.membership_status,
+                networkPlayer.membership_expiration_date,
                 networkPlayer.classification,
                 networkPlayer.city,
-                networkPlayer.stateProv,
+                networkPlayer.state_prov,
                 networkPlayer.country,
                 networkPlayer.rating,
-                networkPlayer.ratingEffectiveDate,
-                networkPlayer.officialStatus,
-                networkPlayer.officialExpirationDate,
-                networkPlayer.lastModified
+                networkPlayer.rating_effective_date,
+                networkPlayer.official_status,
+                networkPlayer.official_expiration_date,
+                networkPlayer.last_modified
             )
         }
     }

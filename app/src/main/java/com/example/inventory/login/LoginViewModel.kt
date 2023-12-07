@@ -32,6 +32,7 @@ class LoginViewModel @Inject constructor(
             _loading.value = Event(true)
             val result = _authenticationRepository.sendAuthentication(userName, password)
             if (result.isSuccess) {
+                checkPreferences()
                 result.getOrNull()?.let {
                     _appPreferences.sessionId = it.sessionId
                     _appPreferences.sessionName = it.sessionName
@@ -50,6 +51,15 @@ class LoginViewModel @Inject constructor(
                 _snackBar.value = Event(message)
             }
             _loading.value = Event(false)
+        }
+    }
+
+    private fun checkPreferences() {
+        // Invalidate Previous User
+        if (!_appPreferences.sessionId.isNullOrEmpty() &&
+            !_appPreferences.sessionName.isNullOrEmpty() &&
+            !_appPreferences.sessionToken.isNullOrEmpty()) {
+            invalidatePreferences()
         }
     }
 

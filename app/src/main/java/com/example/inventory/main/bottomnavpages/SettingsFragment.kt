@@ -12,9 +12,7 @@ import com.example.inventory.common.BaseFragment
 import com.example.inventory.common.Event
 import com.example.inventory.databinding.FragmentSettingsBinding
 import com.example.inventory.login.LoginActivity
-import com.example.inventory.login.LoginFragment
 import com.example.inventory.main.MainViewModel
-import com.example.inventory.utils.ActivityUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,7 +61,7 @@ class SettingsFragment: BaseFragment() {
                 requireActivity().finish()
             }
         } else {
-            binding.actionLogOut.text = getString(R.string.log_out)
+            binding.actionLogOut.text = getString(R.string.action_logout)
             binding.actionLogOut.setOnClickListener {
                 viewModel.logout()
             }
@@ -83,12 +81,9 @@ class SettingsFragment: BaseFragment() {
     private fun setupLogOutListener(event: Event<Boolean?>) {
         event.contentIfNotHandled?.let {
             if (it) {
-                val fragment = LoginFragment()
-                ActivityUtils.replaceFragment(
-                    parentFragmentManager,
-                    fragment,
-                    R.id.fragment_container
-                )
+                val intent = Intent(context, LoginActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
             }
         }
     }

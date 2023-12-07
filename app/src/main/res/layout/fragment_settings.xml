@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
-        style="@style/MainAppTheme.Button.Green"
+        style="@style/MainAppTheme.Button.Blue"
         android:id="@+id/action_log_out"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

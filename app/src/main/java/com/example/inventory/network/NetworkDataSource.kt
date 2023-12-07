@@ -17,10 +17,20 @@ interface NetworkDataSource {
         sessionId: String,
         tokenId: String,
         sessionName: String
-    ): Result<String>
+    ): Result<List<String>>
 
     suspend fun searchPlayers(
         sessionId: String,
-        sessionName: String
+        sessionName: String,
+        pdgaNumber: Int?,
+        lastName: String?,
+        firstName: String?,
+        playerClass: String?,
+        city: String?,
+        stateProv: String?,
+        country: String?,
+        lastModified: String?,
+        limit: Int?,
+        offset: Int?
     ): Result<NetworkPlayerList>
 }

@@ -8,12 +8,6 @@
     <string name="app_settings_title">Settings</string>
     <string name="app_player_lookup_title">Player Lookup</string>
 
-    <string name="log_in">Log In</string>
-    <string name="log_out">Log Out</string>
-    <string name="action_go_home">Sign In</string>
-    <string name="clear_fields">Clear Fields</string>
-    <string name="continue_as_guest">Continue As Guest!</string>
-    <string name="clear_preferences">Clear Cache</string>
     <string name="register">Register</string>
     <string name="login_instructions">Please Select an Option to Continue</string>
 
@@ -30,5 +24,21 @@
     <string name="settings">Settings</string>
     <string name="events">Events</string>
     <string name="players">Player Lookup</string>
+
+    <string name="name_hint">Enter Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="city_hint">City</string>
+    <string name="pdga_number_hint">PDGA Number</string>
+
+    <string name="action_log_in">Log In</string>
+    <string name="action_logout">Log Out</string>
+    <string name="action_clear_fields">Clear Fields</string>
+    <string name="action_continue_as_guest">Continue As Guest!</string>
+    <string name="action_clear_preferences">Clear Cache</string>
+    <string name="action_go_home">Sign In</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_apply">Apply</string>
+
+    <string name="search_instructions">Note: Not all values are required! By Default, if you cancel/choose not to enter a value, it will return a full list of all PDGA players!</string>
 
 </resources>

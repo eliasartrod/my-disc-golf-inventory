@@ -21,15 +21,25 @@ class AuthenticationRepository @Inject constructor(
         sessionId: String,
         tokenId: String,
         sessionName: String
-    ): Result<String> {
+    ): Result<List<String>> {
         return dataSource.logout(sessionId, tokenId, sessionName)
     }
 
     suspend fun searchPlayers(
         sessionId: String,
-        sessionName: String
+        sessionName: String,
+        pdgaNumber: Int?,
+        lastName: String?,
+        firstName: String?,
+        playerClass: String?,
+        city: String?,
+        stateProv: String?,
+        country: String?,
+        lastModified: String?,
+        limit: Int?,
+        offset: Int?
     ): Result<PlayerList?> {
-        return dataSource.searchPlayers(sessionId, sessionName)
+        return dataSource.searchPlayers(sessionId, sessionName, pdgaNumber, lastName, firstName, playerClass, city, stateProv, country, lastModified, limit, offset)
             .map { PlayerList.fromNetwork(it) }
     }
 

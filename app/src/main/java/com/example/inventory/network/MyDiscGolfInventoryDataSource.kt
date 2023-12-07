@@ -23,12 +23,41 @@ class MyDiscGolfInventoryDataSource(
         return authenticationService.sendAuthentication(body)
     }
 
-    override suspend fun logout(sessionId: String, tokenId: String, sessionName: String): Result<String> {
+    override suspend fun logout(sessionId: String, tokenId: String, sessionName: String): Result<List<String>> {
         return authenticationService.logout(tokenId, "$sessionName=$sessionId"
         )
     }
 
-    override suspend fun searchPlayers(sessionId: String, sessionName: String): Result<NetworkPlayerList> {
-        return pdgaService.searchPlayers("$sessionName=$sessionId")
+    override suspend fun searchPlayers(
+        sessionId: String,
+        sessionName: String,
+        pdgaNumber: Int?,
+        lastName: String?,
+        firstName: String?,
+        playerClass: String?,
+        city: String?,
+        stateProv: String?,
+        country: String?,
+        lastModified: String?,
+        limit: Int?,
+        offset: Int?
+    ): Result<NetworkPlayerList> {
+
+        val params = mutableMapOf<String, String>()
+
+        // Add parameters to the map if they are not null or empty
+        pdgaNumber?.let { params["pdga_number"] = it.toString() }
+        lastName?.let { params["last_name"] = it }
+        firstName?.let { params["first_name"] = it }
+        playerClass?.let { params["class"] = it }
+        city?.let { params["city"] = it }
+        stateProv?.let { params["state_prov"] = it }
+        country?.let { params["country"] = it }
+        lastModified?.let { params["last_modified"] = it }
+        limit?.let { params["limit"] = it.toString() }
+        offset?.let { params["offset"] = it.toString() }
+
+        return pdgaService.searchPlayers("$sessionName=$sessionId", params)
     }
+
 }

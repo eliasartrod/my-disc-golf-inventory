@@ -55,11 +55,11 @@
         app:layout_constraintTop_toBottomOf="@id/user_name" />
 
     <Button
-        style="@style/MainAppTheme.Button.Green"
+        style="@style/MainAppTheme.Button.Blue"
         android:id="@+id/action_log_in"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/log_in"
+        android:text="@string/action_log_in"
         android:enabled="false"
         android:layout_marginTop="@dimen/tripleSpacing"
         android:layout_marginStart="@dimen/doubleSpacing"
@@ -69,11 +69,11 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        style="@style/MainAppTheme.Button.Green"
+        style="@style/MainAppTheme.Button.Blue"
         android:id="@+id/action_continue_as_guest"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/continue_as_guest"
+        android:text="@string/action_continue_as_guest"
         android:layout_marginTop="100dp"
         android:layout_marginStart="@dimen/doubleSpacing"
         android:layout_marginEnd="@dimen/doubleSpacing"
@@ -82,11 +82,11 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        style="@style/MainAppTheme.Button.Green"
+        style="@style/MainAppTheme.Button.Blue"
         android:id="@+id/action_clear_cache"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/clear_preferences"
+        android:text="@string/action_clear_preferences"
         android:layout_marginStart="@dimen/doubleSpacing"
         android:layout_marginEnd="@dimen/doubleSpacing"
         app:layout_constraintTop_toBottomOf="@id/action_continue_as_guest"
@@ -94,13 +94,13 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        style="@style/MainAppTheme.Button.Green"
+        style="@style/MainAppTheme.Button.Blue"
         android:id="@+id/action_clear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/doubleSpacing"
         android:layout_marginEnd="@dimen/doubleSpacing"
-        android:text="@string/clear_fields"
+        android:text="@string/action_clear_fields"
         android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
